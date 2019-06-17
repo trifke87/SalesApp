@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1DAD5E3F-0A66-46E7-B433-3AFDC11C1378}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalesApp</RootNamespace>
+    <AssemblyName>SalesApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppContext.cs" />
+    <Compile Include="Migrations\201905301333260_AdjustDB.cs" />
+    <Compile Include="Migrations\201905301333260_AdjustDB.Designer.cs">
+      <DependentUpon>201905301333260_AdjustDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906031941320_ChangeDataTypeToDateTime.cs" />
+    <Compile Include="Migrations\201906031941320_ChangeDataTypeToDateTime.Designer.cs">
+      <DependentUpon>201906031941320_ChangeDataTypeToDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906072141252_ChangePrimaryKeyBarcode.cs" />
+    <Compile Include="Migrations\201906072141252_ChangePrimaryKeyBarcode.Designer.cs">
+      <DependentUpon>201906072141252_ChangePrimaryKeyBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906072154407_AddIdToBarcode.cs" />
+    <Compile Include="Migrations\201906072154407_AddIdToBarcode.Designer.cs">
+      <DependentUpon>201906072154407_AddIdToBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906102106214_BarcodeForeignKey.cs" />
+    <Compile Include="Migrations\201906102106214_BarcodeForeignKey.Designer.cs">
+      <DependentUpon>201906102106214_BarcodeForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906162224417_ChangesInSupplier.cs" />
+    <Compile Include="Migrations\201906162224417_ChangesInSupplier.Designer.cs">
+      <DependentUpon>201906162224417_ChangesInSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Barcode.cs" />
+    <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Views\MaterialMaster.xaml.cs">
+      <DependentUpon>MaterialMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903252146020_InitialModel.cs" />
+    <Compile Include="Migrations\201903252146020_InitialModel.Designer.cs">
+      <DependentUpon>201903252146020_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903252223404_StringFieldLengthRestriction.cs" />
+    <Compile Include="Migrations\201903252223404_StringFieldLengthRestriction.Designer.cs">
+      <DependentUpon>201903252223404_StringFieldLengthRestriction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903312124419_IsActivAndEntryDate.cs" />
+    <Compile Include="Migrations\201903312124419_IsActivAndEntryDate.Designer.cs">
+      <DependentUpon>201903312124419_IsActivAndEntryDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\PartCategory.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\Price.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="ViewModels\Commands\MaterialSave.cs" />
+    <Compile Include="ViewModels\Commands\ParameterCommand.cs" />
+    <Compile Include="ViewModels\Commands\SimpleCommand.cs" />
+    <Compile Include="ViewModels\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\MaterialMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Migrations\201903252146020_InitialModel.resx">
+      <DependentUpon>201903252146020_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903252223404_StringFieldLengthRestriction.resx">
+      <DependentUpon>201903252223404_StringFieldLengthRestriction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903312124419_IsActivAndEntryDate.resx">
+      <DependentUpon>201903312124419_IsActivAndEntryDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905301333260_AdjustDB.resx">
+      <DependentUpon>201905301333260_AdjustDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906031941320_ChangeDataTypeToDateTime.resx">
+      <DependentUpon>201906031941320_ChangeDataTypeToDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906072141252_ChangePrimaryKeyBarcode.resx">
+      <DependentUpon>201906072141252_ChangePrimaryKeyBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906072154407_AddIdToBarcode.resx">
+      <DependentUpon>201906072154407_AddIdToBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906102106214_BarcodeForeignKey.resx">
+      <DependentUpon>201906102106214_BarcodeForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906162224417_ChangesInSupplier.resx">
+      <DependentUpon>201906162224417_ChangesInSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

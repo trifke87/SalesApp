@@ -1,0 +1,92 @@
+﻿<Window x:Class="SalesApp.Views.MaterialMaster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesApp"
+        xmlns:m="clr-namespace:SalesApp.Models"
+        xmlns:vm="clr-namespace:SalesApp.ViewModels"
+        mc:Ignorable="d"
+        Title="MaterialMaster" Height="600" Width="1200">
+    <Window.Resources>
+        <m:Material x:Key="material"/>
+        <vm:MaterialViewModel x:Key="viewModel"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="1" TabStripPlacement="Left">
+            <TabItem Width="150" Height="50" Header="Ulistavanje proizvoda">
+                <Grid x:Name="gridNewMaterial" DataContext="{Binding Source={StaticResource viewModel}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Broj dela:"/>
+                    <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Dobavljacev broj dela:"/>
+                    <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Barcod:"/>
+                    <Label Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Opis dela:"/>
+                    <Label Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Kategorija dela:"/>
+
+                    <TextBox Grid.Column="2" Name="txtPartNumber" Margin="5,18,5,18"
+                             Text="{Binding Path=Material.PartNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBox Grid.Column="2" Grid.Row="1" Name="txtSupplierNumber" Margin="5,18,5,18"
+                             Text="{Binding Path=Material.PartDescription, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <DataGrid Grid.Column="2" Grid.Row="2"
+                              Name="grdBarcode"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="None"
+                              Margin="5,5"
+                              DataContext="{Binding Source={StaticResource viewModel}}"
+                              ItemsSource="{Binding Path=Material.Barcodes}"
+                              >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Barcode" Binding="{Binding BarcodeNumber}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBox Grid.Column="2" Grid.Row="3" Name="txtDescription" Margin="5,5" TextWrapping="Wrap" MaxLength="255" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                    <ComboBox Grid.Column="2" Grid.Row="4" Name="cmbPartCategory" Margin="10,18,10,18"/>
+
+                    <Label Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Slike:"/>
+                    <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Visina pakovanja:"/>
+                    <Label Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Dužina pakovanja:"/>
+                    <Label Grid.Column="3" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Širina pakovanja:"/>
+                    <Label Grid.Column="3" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Težina pakovanja:"/>
+
+                    <TextBox Name="txtHeigh" Grid.Column="4" Grid.Row="1" Margin="10,18,50,18"/>
+                    <TextBox Name="txtLength" Grid.Column="4" Grid.Row="2" Margin="10,18,50,18"/>
+                    <TextBox Name="txtWidth" Grid.Column="4" Grid.Row="3" Margin="10,18,50,18"/>
+                    <TextBox Name="txtWeight" Grid.Column="4" Grid.Row="4" Margin="10,18,50,18"/>
+
+                    <!--<Button Name="btnSave" Content="Sačuvaj" Grid.Column="2" Grid.Row="5" Margin="50,100,50,100" 
+                            CommandParameter="{Binding PartNumber}"
+                            Command="{Binding MaterialSave, Source={StaticResource viewModel}}" 
+                            />-->
+
+                    <Button Name="btnSave" Content="Sačuvaj" Grid.Column="2" Grid.Row="5" Margin="50,100,50,100" 
+                            Command="{Binding SaveCommand}"
+                            />
+                </Grid>
+            </TabItem>
+            <TabItem Height="50" Header="Proba2">
+                <Label Content="asdasd"/>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</Window>
+
