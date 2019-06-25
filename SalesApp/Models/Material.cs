@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SalesApp.Models
 {
-    public class Material : INotifyPropertyChanged, IDataErrorInfo
+    public class Material : BaseModel, IDataErrorInfo
     {
         public Material()
         {
@@ -70,13 +70,13 @@ namespace SalesApp.Models
             set { entryDate = value; }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //private void OnPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
         #region IDataErrorInfo
         public string Error
