@@ -2,23 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SalesApp.Wrapper
 {
-    public class MaterialWrapper
+    public class MaterialWrapper : ModelWrapper<Material>
     {
-        public MaterialWrapper(Material model)
+        public MaterialWrapper(Material model) : base(model)
         {
-            Model = model;
+
         }
 
         public string PartNumber
         {
-            get { return Model.PartNumber; }
-            set { Model.PartNumber = value; }
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
         }
-        public Material Model { get; set; }
+
+        public string PartDescription
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
     }
 }
