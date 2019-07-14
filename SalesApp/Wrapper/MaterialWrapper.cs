@@ -1,6 +1,7 @@
 ﻿using SalesApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -12,7 +13,18 @@ namespace SalesApp.Wrapper
     {
         public MaterialWrapper(Material model) : base(model)
         {
+            InitializeCollectionProperties(model);
+        }
 
+        private void InitializeCollectionProperties(Material model)
+        {
+            if (model.Barcodes == null)
+            {
+                throw new ArgumentException("Barcode cannot be null");
+            }
+            Barcodes = new ObservableCollection<BarcodeWrapper>(
+                model.Barcodes.Select(e => new BarcodeWrapper(e)));
+            RegisterCollection(Barcodes, model.Barcodes);
         }
 
         public string PartNumber
@@ -26,5 +38,7 @@ namespace SalesApp.Wrapper
             get { return GetValue<string>(); }
             set { SetValue(value); }
         }
+
+        public ObservableCollection<BarcodeWrapper> Barcodes { get; private set; }
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\Commands\SimpleCommand.cs" />
     <Compile Include="ViewModels\MaterialViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Wrapper\BarcodeWrapper.cs" />
     <Compile Include="Wrapper\MaterialWrapper.cs" />
     <Compile Include="Wrapper\ModelWrapper.cs" />
     <Page Include="MainWindow.xaml">
